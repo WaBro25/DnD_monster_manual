@@ -55,9 +55,9 @@ function HeaderCard({value}) {
 </div>  
 <div>
   {monster?.damage_immunities ? "Damage Immunities: " + monster?.damage_immunities : undefined}
-</div> 
+</div>
 <div>
-  {monster?.legendary_actions ? "Legendary Actions: " + 
+  {monster?.legendary_actions?.name ? "Legendary Actions: " + 
   monster?.legendary_actions[0].name +  ", " + 
   monster?.legendary_actions[1].name + ", " + 
   monster?.legendary_actions[2].name: undefined}
