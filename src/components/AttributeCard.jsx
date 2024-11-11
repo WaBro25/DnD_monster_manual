@@ -20,9 +20,9 @@ const [monster, setMonster] = useState({});
     }
     fetchMonsterData()
   },[value])
-  console.log("CONST", monster.constitution)
+
   return (
-    <div class="grid grid-cols-2 border border-gray-300 left:64 top-0 left-0 w-64 h-64">
+    <div class="grid grid-cols-2 border border-gray-300 top-0 left-0 w-64 h-64">
           {monster?.strength ? <div>Strength :</div> : ""}
           {monster?.strength}
 
