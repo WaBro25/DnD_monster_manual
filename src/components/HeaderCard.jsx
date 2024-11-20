@@ -1,15 +1,12 @@
-import result from 'autoprefixer/data/prefixes'
 import { useState, useEffect } from 'react'
-import logo from './logo/logo.png';
-import { displayImage } from '../utils/index'
 
 function HeaderCard({value}) {
 
   const [monster, setMonster] = useState({});
+  const [loading, setLoading] = useState(false)
 
     useEffect(() => {
       async function fetchMonsterData(){
-  
         try{
         const URL = 'https://www.dnd5eapi.co/api/'
         const monsterURL = 'monsters/' + `${value}`
@@ -27,7 +24,7 @@ function HeaderCard({value}) {
       fetchMonsterData()
     },[value])
 
-    if(monster.image){
+    if(monster?.image){
     const monsterImage = "https://www.dnd5eapi.co" + monster.image;
     const imgElement = document.getElementById("image");
     imgElement.src = monsterImage;
@@ -38,7 +35,8 @@ function HeaderCard({value}) {
   return (
     <>
       {/* Top right column*/}
-      <div class="absolute inset-y-20 right-96 grid grid-cols-1 border border-gray-300 w-64 h-64">
+      {monster?.hit_points ? 
+      <div class="absolute inset-y-20 right-96 grid grid-cols-1 border border-gray-300 w-64 h-60">
       <div>
     {monster?.hit_points ? "HP: " + monster?.hit_points : null}
   </div>
@@ -63,7 +61,9 @@ function HeaderCard({value}) {
   monster?.legendary_actions[2].name: undefined}
 </div> 
   </div>
+  : ""}
   {/* Bottom left column*/}
+  {monster?.challenge_rating ? 
 <div class="grid grid-cols-1 border border-gray-300 w-64 h-64">
   <div>
     {monster?.challenge_rating? "Challenge Rating: " + monster?.challenge_rating: null}
@@ -81,7 +81,9 @@ function HeaderCard({value}) {
   {monster?.hit_dice ? "Hit Dice: " + monster?.hit_dice : undefined}
 </div>  
 </div>
+: ""}
 </>
+
   )
 }
 export default HeaderCard

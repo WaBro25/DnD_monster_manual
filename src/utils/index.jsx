@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 
  async function fetchMonsterData(value) {
 
@@ -22,4 +20,5 @@ import React, { useState } from 'react'
   function displayImage(image_url){
     document.getElementById("image").src = image_url
   }
+  
   export {fetchMonsterData, displayImage}
